@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: excel-validate-formula
+  name: Excel Validate Formula
+  description: Validates a formula's syntax without applying it. Lets an agent check its own work before
+    writing something that renders as `#NAME?` to whoever opens the file next.
+category: capability
+implementation:
+  type: mcp_tool
+  server: excel
+  tool: validate_formula_syntax
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

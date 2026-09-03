@@ -60,3 +60,20 @@ the entry. Someone who already copied a broken bundle learns nothing from its di
 The issue is the interface to whoever fixes it, and "whoever" can be a swarm: a broken bundle is a
 well-specified task with a machine-checkable acceptance test, which is `scripts/check_liveness.py`
 passing.
+
+## What gets turned down, and why
+
+Two questions look like one and are not: **does the server answer** and **should you adopt it**. The
+liveness check only answers the first, so the second stays a curation judgement.
+
+| turned down | it answered | why not, anyway |
+| --- | --- | --- |
+| `@modelcontextprotocol/server-puppeteer` | yes — 7 tools | deprecated on npm: *"Package no longer supported."* It would have earned a ✅ on day one and rotted with nobody watching. Playwright and Chrome DevTools cover the same ground and are both maintained. |
+| `mcp-server-sqlite` | no | `AttributeError: 'Server' object has no attribute 'list_resources'` — written against an MCP SDK API that no longer exists. Use the DuckDB bundle, which reads SQLite files too. |
+| `@modelcontextprotocol/server-everything` | yes — 13 tools | it is the protocol's *test* server: `echo`, `get-sum`, `get-tiny-image`. Useful as a fixture for our own checks, not as a capability to grant an agent. |
+
+So: **a deprecation notice is grounds for refusal even when the server works**, and a catalogue entry
+has to be something you would actually grant an agent. If you are proposing a server that overlaps
+one already here, say what it does that the existing one cannot — that is the test Chrome DevTools
+had to pass next to Playwright, and it is why its skills are traces and console messages rather than
+another way to click a button.

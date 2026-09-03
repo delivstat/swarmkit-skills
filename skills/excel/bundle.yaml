@@ -1,0 +1,39 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: excel
+  name: Excel
+  description: "Read and write .xlsx workbooks \u2014 data, formulas, formatting \u2014 with no Excel\
+    \ installed."
+server:
+  id: excel
+  transport: stdio
+  command:
+  - uvx
+  - excel-mcp-server
+  - stdio
+  permission: cautious
+  effects:
+    read_data_from_excel: read
+    get_workbook_metadata: read
+    validate_excel_range: read
+    validate_formula_syntax: read
+    write_data_to_excel: write
+    create_workbook: write
+    apply_formula: write
+    format_range: write
+skills:
+- excel-read-data
+- excel-workbook-metadata
+- excel-validate-range
+- excel-validate-formula
+- excel-write-data
+- excel-apply-formula
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: pypi excel-mcp-server
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 6 tool(s) present

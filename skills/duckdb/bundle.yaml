@@ -1,0 +1,33 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: duckdb
+  name: DuckDB
+  description: "Run SQL over local files \u2014 CSV, Parquet, JSON \u2014 with no database to operate."
+server:
+  id: duckdb
+  transport: stdio
+  command:
+  - uvx
+  - mcp-server-motherduck
+  - --db-path
+  - ':memory:'
+  - --read-write
+  permission: cautious
+  effects:
+    list_databases: read
+    list_tables: read
+    list_columns: read
+    execute_query: write
+skills:
+- duckdb-list-tables
+- duckdb-list-columns
+- duckdb-query
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: pypi mcp-server-motherduck
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 3 tool(s) present

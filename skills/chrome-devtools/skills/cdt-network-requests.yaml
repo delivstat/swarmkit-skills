@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: cdt-network-requests
+  name: Network Requests
+  description: Lists the recent network requests, with status and timing. Distinguishes *the page is slow*
+    from *one request is slow*, and finds the 404 for an asset that fails silently.
+category: capability
+implementation:
+  type: mcp_tool
+  server: chrome-devtools
+  tool: list_network_requests
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

@@ -1,0 +1,40 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: chrome-devtools
+  name: Chrome DevTools
+  description: 'Diagnose a page: performance traces, console errors, network requests and a Lighthouse
+    audit.'
+server:
+  id: chrome-devtools
+  transport: stdio
+  command:
+  - npx
+  - -y
+  - chrome-devtools-mcp@latest
+  permission: cautious
+  effects:
+    take_snapshot: read
+    list_console_messages: read
+    get_console_message: read
+    list_network_requests: read
+    get_network_request: read
+    lighthouse_audit: read
+    performance_analyze_insight: read
+    navigate_page: write
+    performance_start_trace: write
+    performance_stop_trace: write
+skills:
+- cdt-console-messages
+- cdt-network-requests
+- cdt-lighthouse-audit
+- cdt-performance-trace
+- cdt-analyze-insight
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: npm chrome-devtools-mcp
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 5 tool(s) present
