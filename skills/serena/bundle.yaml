@@ -1,0 +1,49 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: serena
+  name: Serena
+  description: "Symbol-level code operations from a language server \u2014 find definitions, references\
+    \ and implementations."
+server:
+  id: serena
+  transport: stdio
+  command:
+  - uvx
+  - --from
+  - git+https://github.com/oraios/serena
+  - serena
+  - start-mcp-server
+  - --context
+  - ide-assistant
+  - --project
+  - ${SWARMKIT_SERENA_PROJECT}
+  permission: cautious
+  effects:
+    get_symbols_overview: read
+    find_symbol: read
+    find_referencing_symbols: read
+    find_implementations: read
+    find_declaration: read
+    get_diagnostics_for_file: read
+    replace_symbol_body: write
+    rename_symbol: write
+skills:
+- serena-symbols-overview
+- serena-find-symbol
+- serena-find-references
+- serena-find-implementations
+- serena-diagnostics
+- serena-replace-symbol-body
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: git github.com/oraios/serena
+  maintainer: delivstat/swarmkit-skills
+check:
+  env:
+    SWARMKIT_SERENA_PROJECT: .
+  note: needs a project to index; the checkout itself will do
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 6 tool(s) present

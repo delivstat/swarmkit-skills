@@ -1,0 +1,21 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: serena-find-implementations
+  name: Serena Find Implementations
+  description: 'Finds the implementations of an interface or abstract method. The one navigation that
+    is genuinely hard without a language server: an interface''s name appears nowhere in the class that
+    implements it in most languages.'
+category: capability
+implementation:
+  type: mcp_tool
+  server: serena
+  tool: find_implementations
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

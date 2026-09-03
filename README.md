@@ -8,7 +8,7 @@ an argument, or disappears, and the entry keeps claiming it works. A nightly job
 here and asks whether the tool each skill names still exists, so *verified* carries a date rather
 than a promise.
 
-**8 bundles · 18 skills.**
+**13 bundles · 39 skills.**
 
 ## What you get for the paste
 
@@ -21,13 +21,18 @@ wants. Every entry here has that already written down and checked.
 
 | | bundle | skills | needs | verified |
 | --- | --- | --- | --- | --- |
+| ✅ | [Chrome DevTools](skills/chrome-devtools/) | 5 | `npm chrome-devtools-mcp` | 2026-09-03 |
 | ✅ | [Context7](skills/context7/) | 2 | `npm @upstash/context7-mcp` | 2026-09-03 |
+| ✅ | [DuckDB](skills/duckdb/) | 3 | `pypi mcp-server-motherduck` | 2026-09-03 |
+| ✅ | [Excel](skills/excel/) | 6 | `pypi excel-mcp-server` | 2026-09-03 |
 | ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-09-03 |
 | ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-09-03 |
 | ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-09-03 |
+| ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-09-03 |
 | ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-09-03 |
 | ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-09-03 |
 | ✅ | [Sequential Thinking](skills/sequential-thinking/) | 1 | `npm @modelcontextprotocol/server-sequential-thinking` | 2026-09-03 |
+| ✅ | [Serena](skills/serena/) | 6 | `git github.com/oraios/serena` | 2026-09-03 |
 | ✅ | [Time](skills/time/) | 2 | `pypi mcp-server-time` | 2026-09-03 |
 
 | mark | meaning |
@@ -57,6 +62,20 @@ adding a write reaches nobody, so a bundle can never silently widen an agent tha
 
 ## The bundles
 
+### ✅ [Chrome DevTools](skills/chrome-devtools/)
+
+Diagnose a page: performance traces, console errors, network requests and a Lighthouse audit.
+
+Needs swarmkit-runtime `>=1.199.0` · upstream `npm chrome-devtools-mcp`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`cdt-analyze-insight`](skills/chrome-devtools/README.md) | `performance_analyze_insight` | read |
+| [`cdt-console-messages`](skills/chrome-devtools/README.md) | `list_console_messages` | read |
+| [`cdt-lighthouse-audit`](skills/chrome-devtools/README.md) | `lighthouse_audit` | read |
+| [`cdt-network-requests`](skills/chrome-devtools/README.md) | `list_network_requests` | read |
+| [`cdt-performance-trace`](skills/chrome-devtools/README.md) | `performance_start_trace` | write |
+
 ### ✅ [Context7](skills/context7/)
 
 Up-to-date documentation for a library, fetched on demand.
@@ -67,6 +86,33 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `npm @upstash/context7-mcp`
 | --- | --- | --- |
 | [`library-docs`](skills/context7/README.md) | `query-docs` | read |
 | [`resolve-library-id`](skills/context7/README.md) | `resolve-library-id` | read |
+
+### ✅ [DuckDB](skills/duckdb/)
+
+Run SQL over local files — CSV, Parquet, JSON — with no database to operate.
+
+Needs swarmkit-runtime `>=1.199.0` · upstream `pypi mcp-server-motherduck`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`duckdb-list-columns`](skills/duckdb/README.md) | `list_columns` | read |
+| [`duckdb-list-tables`](skills/duckdb/README.md) | `list_tables` | read |
+| [`duckdb-query`](skills/duckdb/README.md) | `execute_query` | write |
+
+### ✅ [Excel](skills/excel/)
+
+Read and write .xlsx workbooks — data, formulas, formatting — with no Excel installed.
+
+Needs swarmkit-runtime `>=1.199.0` · upstream `pypi excel-mcp-server`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`excel-apply-formula`](skills/excel/README.md) | `apply_formula` | write |
+| [`excel-read-data`](skills/excel/README.md) | `read_data_from_excel` | read |
+| [`excel-validate-formula`](skills/excel/README.md) | `validate_formula_syntax` | read |
+| [`excel-validate-range`](skills/excel/README.md) | `validate_excel_range` | read |
+| [`excel-workbook-metadata`](skills/excel/README.md) | `get_workbook_metadata` | read |
+| [`excel-write-data`](skills/excel/README.md) | `write_data_to_excel` | write |
 
 ### ✅ [Fetch](skills/fetch/)
 
@@ -103,6 +149,16 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `pypi mcp-server-git`
 | [`git-log`](skills/git/README.md) | `git_log` | read |
 | [`git-status`](skills/git/README.md) | `git_status` | read |
 
+### ✅ [MarkItDown](skills/markitdown/)
+
+Convert a PDF, Office document, image or web page to markdown.
+
+Needs swarmkit-runtime `>=1.199.0` · upstream `pypi markitdown-mcp`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`convert-to-markdown`](skills/markitdown/README.md) | `convert_to_markdown` | read |
+
 ### ✅ [Memory](skills/memory/)
 
 A knowledge graph the agent can write to and read back.
@@ -135,6 +191,21 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `npm @modelcontextprotocol/server
 | skill | tool | effects |
 | --- | --- | --- |
 | [`sequential-thinking`](skills/sequential-thinking/README.md) | `sequentialthinking` | read |
+
+### ✅ [Serena](skills/serena/)
+
+Symbol-level code operations from a language server — find definitions, references and implementations.
+
+Needs swarmkit-runtime `>=1.199.0` · upstream `git github.com/oraios/serena`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`serena-diagnostics`](skills/serena/README.md) | `get_diagnostics_for_file` | read |
+| [`serena-find-implementations`](skills/serena/README.md) | `find_implementations` | read |
+| [`serena-find-references`](skills/serena/README.md) | `find_referencing_symbols` | read |
+| [`serena-find-symbol`](skills/serena/README.md) | `find_symbol` | read |
+| [`serena-replace-symbol-body`](skills/serena/README.md) | `replace_symbol_body` | write |
+| [`serena-symbols-overview`](skills/serena/README.md) | `get_symbols_overview` | read |
 
 ### ✅ [Time](skills/time/)
 

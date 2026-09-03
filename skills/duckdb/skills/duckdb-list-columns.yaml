@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: duckdb-list-columns
+  name: DuckDB List Columns
+  description: Lists a table's columns with types and comments. Types decide whether a comparison is a
+    comparison or a string mismatch, and the comments are often the only documentation the data has.
+category: capability
+implementation:
+  type: mcp_tool
+  server: duckdb
+  tool: list_columns
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

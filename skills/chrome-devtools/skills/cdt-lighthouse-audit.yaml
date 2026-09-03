@@ -1,0 +1,21 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: cdt-lighthouse-audit
+  name: Lighthouse Audit
+  description: Runs a Lighthouse audit for accessibility, SEO and best practices. Turns *does this page
+    look fine* into a scored report against published criteria, which is a claim a reviewer can check
+    rather than a matter of taste.
+category: capability
+implementation:
+  type: mcp_tool
+  server: chrome-devtools
+  tool: lighthouse_audit
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

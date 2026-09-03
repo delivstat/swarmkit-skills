@@ -1,0 +1,25 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: markitdown
+  name: MarkItDown
+  description: Convert a PDF, Office document, image or web page to markdown.
+server:
+  id: markitdown
+  transport: stdio
+  command:
+  - uvx
+  - markitdown-mcp
+  permission: readonly
+  effects:
+    convert_to_markdown: read
+skills:
+- convert-to-markdown
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: pypi markitdown-mcp
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 1 tool(s) present
