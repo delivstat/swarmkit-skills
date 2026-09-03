@@ -1,0 +1,26 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: sequential-thinking
+  name: Sequential Thinking
+  description: A structured scratchpad for multi-step reasoning.
+server:
+  id: sequential-thinking
+  transport: stdio
+  command:
+  - npx
+  - -y
+  - '@modelcontextprotocol/server-sequential-thinking'
+  permission: readonly
+  effects:
+    sequentialthinking: read
+skills:
+- sequential-thinking
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: npm @modelcontextprotocol/server-sequential-thinking
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 1 tool(s) present

@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: memory-search
+  name: Memory Search
+  description: Searches the knowledge graph. Recall without re-reading. An agent that can look up what
+    it already established stops rediscovering it every run.
+category: capability
+implementation:
+  type: mcp_tool
+  server: memory
+  tool: search_nodes
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

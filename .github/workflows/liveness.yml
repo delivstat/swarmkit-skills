@@ -1,0 +1,61 @@
+# Start every server and ask whether the tools its skills name still exist.
+#
+# Nightly, not per-push: a third-party outage must never block a merge — that is how a check gets
+# disabled, and a disabled check is indistinguishable from no check. The claim this repo makes is
+# "verified on a date", so a daily answer is the product.
+name: liveness
+
+on:
+  schedule: [{ cron: "0 4 * * *" }]
+  workflow_dispatch:
+  pull_request:
+    paths: ["skills/**", "scripts/check_liveness.py"]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  liveness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: pip install -q "mcp<2" pyyaml uv
+
+      - name: Check every bundle
+        id: check
+        run: |
+          set +e
+          python3 scripts/check_liveness.py --write | tee liveness.txt
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+
+      # The dates in the README are the product. A check that does not record its answer leaves the
+      # repo claiming whatever it claimed yesterday.
+      - name: Record the result
+        if: github.event_name == 'schedule'
+        run: |
+          python3 scripts/build_readme.py
+          if ! git diff --quiet; then
+            git config user.name "swarmkit-skills"
+            git config user.email "noreply@delivstat.com"
+            git commit -am "chore(liveness): $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      # A broken entry becomes an issue rather than a silent red run — the interface to whoever
+      # fixes it, which can be a person or a swarm: the acceptance test is this check passing.
+      - name: File an issue for a broken bundle
+        if: steps.check.outputs.status != '0' && github.event_name == 'schedule'
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          gh issue create --title "liveness: a bundle names a tool its server no longer has" \
+            --label liveness \
+            --body "$(printf 'The nightly check found a bundle whose backing tool is gone.\n\n```\n%s\n```\n\nA fix is accepted when this passes:\n\n    python3 scripts/check_liveness.py\n' "$(cat liveness.txt)")"
+
+      - name: Fail when something is broken
+        if: steps.check.outputs.status != '0'
+        run: exit 1

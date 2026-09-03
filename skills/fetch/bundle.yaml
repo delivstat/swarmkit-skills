@@ -1,0 +1,25 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: fetch
+  name: Fetch
+  description: Retrieve a URL and convert it to markdown an agent can read.
+server:
+  id: fetch
+  transport: stdio
+  command:
+  - uvx
+  - mcp-server-fetch
+  permission: readonly
+  effects:
+    fetch: read
+skills:
+- fetch-url
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: pypi mcp-server-fetch
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 1 tool(s) present

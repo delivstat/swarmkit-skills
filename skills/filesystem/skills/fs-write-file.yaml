@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: fs-write-file
+  name: Fs Write File
+  description: 'Writes a file, creating or replacing it. The write half. Declared effects: write, so `permission:
+    readonly` denies it and a bulk `pack:` grant never carries it.'
+category: capability
+implementation:
+  type: mcp_tool
+  server: filesystem
+  tool: write_file
+iam:
+  required_scopes:
+  - workspace:write
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

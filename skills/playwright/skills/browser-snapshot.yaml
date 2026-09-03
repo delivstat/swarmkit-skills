@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: browser-snapshot
+  name: Browser Snapshot
+  description: "Returns the page's accessibility tree. The accessibility tree is the closest thing a page\
+    \ has to a semantic contract \u2014 far more stable than a screenshot and far cheaper than raw HTML."
+category: capability
+implementation:
+  type: mcp_tool
+  server: playwright
+  tool: browser_snapshot
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

@@ -1,0 +1,27 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: time
+  name: Time
+  description: Current time and timezone conversion.
+server:
+  id: time
+  transport: stdio
+  command:
+  - uvx
+  - mcp-server-time
+  permission: readonly
+  effects:
+    get_current_time: read
+    convert_time: read
+skills:
+- current-time
+- convert-time
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: pypi mcp-server-time
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 2 tool(s) present

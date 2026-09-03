@@ -1,0 +1,34 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: memory
+  name: Memory
+  description: A knowledge graph the agent can write to and read back.
+server:
+  id: memory
+  transport: stdio
+  command:
+  - npx
+  - -y
+  - '@modelcontextprotocol/server-memory'
+  permission: cautious
+  effects:
+    read_graph: read
+    search_nodes: read
+    open_nodes: read
+    create_entities: write
+    create_relations: write
+    add_observations: write
+    delete_entities: write
+    delete_relations: write
+skills:
+- memory-search
+- memory-write
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: npm @modelcontextprotocol/server-memory
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 2 tool(s) present

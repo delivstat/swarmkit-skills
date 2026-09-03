@@ -1,0 +1,28 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: context7
+  name: Context7
+  description: Up-to-date documentation for a library, fetched on demand.
+server:
+  id: context7
+  transport: stdio
+  command:
+  - npx
+  - -y
+  - '@upstash/context7-mcp@latest'
+  permission: readonly
+  effects:
+    resolve-library-id: read
+    query-docs: read
+skills:
+- resolve-library-id
+- library-docs
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: npm @upstash/context7-mcp
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 2 tool(s) present

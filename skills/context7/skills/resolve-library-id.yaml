@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: resolve-library-id
+  name: Resolve Library Id
+  description: Finds the library id for a package name. Names are ambiguous; ids are not. This is the
+    lookup step before fetching docs.
+category: capability
+implementation:
+  type: mcp_tool
+  server: context7
+  tool: resolve-library-id
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

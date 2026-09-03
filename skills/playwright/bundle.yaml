@@ -1,0 +1,33 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: playwright
+  name: Playwright
+  description: 'Drive a real browser: navigate, click, fill, and read the page.'
+server:
+  id: playwright
+  transport: stdio
+  command:
+  - npx
+  - -y
+  - '@playwright/mcp@latest'
+  permission: cautious
+  effects:
+    browser_snapshot: read
+    browser_take_screenshot: read
+    browser_console_messages: read
+    browser_navigate: write
+    browser_click: write
+    browser_type: write
+skills:
+- browser-snapshot
+- browser-navigate
+- browser-click
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: npm @playwright/mcp
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 3 tool(s) present

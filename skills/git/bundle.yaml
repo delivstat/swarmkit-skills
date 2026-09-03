@@ -1,0 +1,36 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: git
+  name: Git
+  description: Read history, diffs and blame from a local repository.
+server:
+  id: git
+  transport: stdio
+  command:
+  - uvx
+  - mcp-server-git
+  - --repository
+  - ${SWARMKIT_GIT_REPO}
+  permission: readonly
+  effects:
+    git_status: read
+    git_diff: read
+    git_log: read
+    git_show: read
+skills:
+- git-status
+- git-diff
+- git-log
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: pypi mcp-server-git
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: verified
+  checked_at: '2026-09-03'
+  detail: 3 tool(s) present
+check:
+  env:
+    SWARMKIT_GIT_REPO: .
+  note: needs a path to a real git repository; the checkout itself will do

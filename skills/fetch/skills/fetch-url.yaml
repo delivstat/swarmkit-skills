@@ -1,0 +1,20 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: fetch-url
+  name: Fetch Url
+  description: Fetches a URL and returns it as markdown. Raw HTML wastes most of a context window on markup.
+    Converting first means the agent reads the page rather than the page's scaffolding.
+category: capability
+implementation:
+  type: mcp_tool
+  server: fetch
+  tool: fetch
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills
