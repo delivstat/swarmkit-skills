@@ -1,0 +1,22 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: convert-to-markdown
+  name: Convert To Markdown
+  description: "Converts a document at a URI \u2014 PDF, Word, PowerPoint, Excel, HTML, image or CSV \u2014\
+    \ to markdown. The alternative is an agent that cannot read the attachment the whole task is about.\
+    \ Markdown preserves the headings and tables that carry the structure, which plain text extraction\
+    \ throws away."
+category: capability
+implementation:
+  type: mcp_tool
+  server: markitdown
+  tool: convert_to_markdown
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.199.0'
+  registry: swarmkit-skills

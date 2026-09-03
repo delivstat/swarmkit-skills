@@ -77,3 +77,38 @@ has to be something you would actually grant an agent. If you are proposing a se
 one already here, say what it does that the existing one cannot — that is the test Chrome DevTools
 had to pass next to Playwright, and it is why its skills are traces and console messages rather than
 another way to click a button.
+
+## Proving a bundle, not just listing it
+
+`scripts/check_contract.py` runs per push and asks SwarmKit itself, in three steps. Run it before
+opening a PR:
+
+```bash
+pip install "swarmkit-runtime>=1.205.0" pyyaml jsonschema
+python3 scripts/check_contract.py [bundle]
+```
+
+**Declare how your bundle proves itself.** One read call, in `bundle.yaml`:
+
+```yaml
+check:
+  env: { SWARMKIT_GIT_REPO: "." }        # "." resolves to the checkout
+  invoke:
+    tool: git_status
+    args: { repo_path: "." }             # ${ROOT} also expands to the checkout
+    expect: "branch"                     # optional substring the response must contain
+```
+
+Pick something read-only, deterministic, and free of credentials. A bundle with no `check.invoke`
+is honestly weaker-tested — the summary counts it separately rather than implying otherwise — and
+that is the right answer for a browser or a language server, which liveness already proves starts.
+
+**Why bother, when liveness passes?** Because *exists* and *works* are different claims. The first
+run of this check found `execute_query` had been renamed to take `sql` rather than `query`: the tool
+was present, the bundle was wrong, and every check in the repo was green.
+
+**The `readOnlyHint` cross-check is the one that catches a lie.** Every other check compares a
+bundle against itself, so declaring `write_file: read` passes all of them — the governance gate's
+job is to believe the declaration. Most servers publish a `readOnlyHint` per tool, and that is the
+only independent opinion available, so a disagreement fails. If your server publishes no hints, say
+so in the PR: that bundle's effects map rests on your reading of the docs and nothing else.

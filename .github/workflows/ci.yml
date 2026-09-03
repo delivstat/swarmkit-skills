@@ -3,6 +3,7 @@ on: [push, pull_request]
 
 jobs:
   check:
+    name: structure
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,3 +14,23 @@ jobs:
         run: python3 scripts/check_bundles.py
       - name: The index matches the bundles
         run: python3 scripts/build_readme.py --check
+
+  # Structure says the YAML is shaped right. This says SwarmKit agrees — the published blocks parse,
+  # the example workspace loads, `readonly` denies what the effects map calls a write, and the tools
+  # answer a real call. It runs per push rather than nightly because it exercises the repo's own
+  # claims, not a third party's uptime: the servers it starts are the credential-free ones.
+  contract:
+    name: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: pip install -q "swarmkit-runtime>=1.205.0" pyyaml jsonschema uv
+      - name: SwarmKit parses, governs and calls every bundle it can
+        run: python3 scripts/check_contract.py
+        env:
+          SWARMKIT_GIT_REPO: .
+          SWARMKIT_FS_ROOT: .

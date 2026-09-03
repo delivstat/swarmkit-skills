@@ -31,3 +31,9 @@ verification:
   state: verified
   checked_at: '2026-09-03'
   detail: 3 tool(s) present
+check:
+  invoke:
+    tool: execute_query
+    args:
+      sql: SELECT 42 AS answer
+    expect: '42'

@@ -34,3 +34,7 @@ check:
   env:
     SWARMKIT_GIT_REPO: .
   note: needs a path to a real git repository; the checkout itself will do
+  invoke:
+    tool: git_status
+    args:
+      repo_path: .

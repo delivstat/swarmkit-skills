@@ -37,3 +37,9 @@ verification:
   state: verified
   checked_at: '2026-09-03'
   detail: 4 tool(s) present
+check:
+  invoke:
+    tool: list_directory
+    args:
+      path: .
+    expect: skills

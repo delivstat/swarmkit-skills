@@ -23,3 +23,9 @@ verification:
   state: verified
   checked_at: '2026-09-03'
   detail: 1 tool(s) present
+check:
+  invoke:
+    tool: convert_to_markdown
+    args:
+      uri: file://${ROOT}/CONTRIBUTING.md
+    expect: bundle
