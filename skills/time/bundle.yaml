@@ -25,3 +25,9 @@ verification:
   state: verified
   checked_at: '2026-09-03'
   detail: 2 tool(s) present
+check:
+  invoke:
+    tool: get_current_time
+    args:
+      timezone: UTC
+    expect: UTC

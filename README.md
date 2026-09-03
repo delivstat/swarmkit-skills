@@ -10,6 +10,27 @@ than a promise.
 
 **13 bundles · 39 skills.**
 
+## How an entry is checked
+
+Four questions, because *the tool exists* is the weakest of them and the easiest to mistake for
+the others.
+
+| | question | when |
+| --- | --- | --- |
+| **liveness** | does the tool this skill names still exist? | nightly |
+| **schema** | is every skill a valid SwarmKit Skill, and does the example workspace load? | per push |
+| **governance** | under `permission: readonly`, does the runtime's own gate allow the reads and deny the writes? | per push |
+| **invocation** | called for real, does the tool answer — and does the server's own `readOnlyHint` agree with the effects we declared? | per push |
+
+The last one matters most. Everything else compares a bundle against itself, so an effects map
+that simply lies — `write_file: read` — passes them all; the gate's job is to believe the
+declaration. The server's own hint is the one independent opinion available, and it is checked
+against every declared effect on every server that publishes one.
+
+[`examples/repo-report/`](examples/repo-report/) is a runnable workspace assembled only from
+bundle blocks, pasted unchanged. It is the showcase and the fixture: CI loads it with the real
+runtime, so a block SwarmKit cannot parse fails here rather than in your terminal.
+
 ## What you get for the paste
 
 The hard part of adopting an MCP server is never the server. It is the `mcp_servers` block with the

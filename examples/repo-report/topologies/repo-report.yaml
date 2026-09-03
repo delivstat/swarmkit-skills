@@ -1,0 +1,38 @@
+apiVersion: swarmkit/v1
+kind: Topology
+metadata:
+  name: repo-report
+  version: 1.0.0
+agents:
+  root:
+    id: root
+    role: root
+    archetype: report-writer
+    prompt:
+      system: >
+        You summarise a repository for someone who has never seen it.
+
+        Delegate to repo-reader for the file layout and to history-reader for what has been
+        happening lately. Then write a short markdown report: what this repository is, how it is
+        laid out, and what changed recently. Cite paths and commits rather than describing them
+        in general terms.
+    children:
+      - id: repo-reader
+        role: worker
+        archetype: catalogue-reader
+        skills:
+          - fs-list-directory
+          - fs-read-file
+          - fs-search-files
+          - convert-to-markdown
+      - id: history-reader
+        role: worker
+        archetype: catalogue-reader
+        prompt:
+          system: >
+            You read version-control history. Report what changed recently and who is working on
+            what. Return findings, not prose — the root agent writes the report.
+        skills:
+          - git-log
+          - git-status
+          - git-diff

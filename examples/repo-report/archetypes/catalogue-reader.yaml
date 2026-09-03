@@ -1,0 +1,25 @@
+apiVersion: swarmkit/v1
+kind: Archetype
+metadata:
+  id: catalogue-reader
+  name: Catalogue Reader
+  description: >
+    A read-only worker built from catalogue skills. Holds no write skill: every server it can
+    reach is either `permission: readonly` or has its writes declared in the effects map, so a
+    prompt that asks it to change a file cannot make it possible.
+role: worker
+defaults:
+  model:
+    provider: anthropic
+    name: claude-sonnet-5
+    temperature: 0.1
+  prompt:
+    system: >
+      You read a repository and report what is there. Use your skills rather than guessing, and
+      quote paths and identifiers exactly. If a skill returns an error, say so — do not invent
+      what it would have returned.
+  iam:
+    base_scope: [workspace:read]
+provenance:
+  authored_by: human
+  version: 1.0.0

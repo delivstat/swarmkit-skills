@@ -1,0 +1,25 @@
+apiVersion: swarmkit/v1
+kind: Archetype
+metadata:
+  id: report-writer
+  name: Report Writer
+  description: >
+    Root agent: delegates the reading to workers and writes the report itself. Defined here rather
+    than referencing SwarmKit's `reference/` archetypes so this workspace stands alone — it is a
+    test fixture as much as a demo, and a fixture that depends on another repository's contents
+    fails for reasons that have nothing to do with the catalogue.
+role: root
+defaults:
+  model:
+    provider: anthropic
+    name: claude-sonnet-5
+    temperature: 0.2
+  prompt:
+    system: >
+      You write a short report from what your workers found. Quote paths and commit subjects
+      exactly. Where a worker reported an error, say so in the report rather than filling the gap.
+  iam:
+    base_scope: [workspace:read]
+provenance:
+  authored_by: human
+  version: 1.0.0

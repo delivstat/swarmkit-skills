@@ -1,0 +1,54 @@
+apiVersion: swarmkit/v1
+kind: Workspace
+metadata:
+  id: repo-report
+  name: Repo Report
+  description: >
+    A working SwarmKit workspace assembled entirely from catalogue bundles, with nothing
+    hand-written in the server blocks. It is the showcase and it is the test: `check_contract.py`
+    loads this with the real runtime, so a bundle whose published config SwarmKit cannot parse
+    fails CI here rather than in somebody's terminal.
+
+    The swarm reads a repository and writes a markdown report about it. Chosen because every
+    server it needs runs with no credential, so the whole thing is reproducible by anyone.
+
+# ---- server blocks, copied verbatim from the bundles ------------------------
+# skills/git/bundle.yaml · skills/filesystem/bundle.yaml · skills/markitdown/bundle.yaml
+mcp_servers:
+  - id: git
+    transport: stdio
+    command: ["uvx", "mcp-server-git", "--repository", "${SWARMKIT_GIT_REPO}"]
+    permission: readonly
+    effects:
+      git_status: read
+      git_diff: read
+      git_log: read
+      git_show: read
+
+  - id: filesystem
+    transport: stdio
+    command: ["npx", "-y", "@modelcontextprotocol/server-filesystem", "${SWARMKIT_FS_ROOT}"]
+    permission: cautious
+    effects:
+      read_file: read
+      read_multiple_files: read
+      list_directory: read
+      directory_tree: read
+      search_files: read
+      get_file_info: read
+      write_file: write
+      edit_file: write
+      create_directory: write
+      move_file: write
+
+  - id: markitdown
+    transport: stdio
+    command: ["uvx", "markitdown-mcp"]
+    permission: readonly
+    effects:
+      convert_to_markdown: read
+
+storage:
+  checkpoints:
+    backend: sqlite
+    path: ./.swarmkit/state
