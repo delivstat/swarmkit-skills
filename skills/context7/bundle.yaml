@@ -23,6 +23,6 @@ provenance:
   upstream: npm @upstash/context7-mcp
   maintainer: delivstat/swarmkit-skills
 verification:
-  state: verified
-  checked_at: '2026-09-03'
-  detail: 2 tool(s) present
+  state: broken
+  checked_at: '2026-09-04'
+  detail: 'ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)'
