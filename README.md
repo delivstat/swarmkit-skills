@@ -42,19 +42,19 @@ wants. Every entry here has that already written down and checked.
 
 | | bundle | skills | needs | verified |
 | --- | --- | --- | --- | --- |
-| ❌ | [Chrome DevTools](skills/chrome-devtools/) | 5 | `npm chrome-devtools-mcp` | 2026-09-04 |
-| ❌ | [Context7](skills/context7/) | 2 | `npm @upstash/context7-mcp` | 2026-09-04 |
-| ✅ | [DuckDB](skills/duckdb/) | 3 | `pypi mcp-server-motherduck` | 2026-09-04 |
-| ✅ | [Excel](skills/excel/) | 6 | `pypi excel-mcp-server` | 2026-09-04 |
-| ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-09-04 |
-| ❌ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-09-04 |
-| ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-09-04 |
-| ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-09-04 |
-| ❌ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-09-04 |
-| ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-09-04 |
-| ❌ | [Sequential Thinking](skills/sequential-thinking/) | 1 | `npm @modelcontextprotocol/server-sequential-thinking` | 2026-09-04 |
-| ✅ | [Serena](skills/serena/) | 6 | `git github.com/oraios/serena` | 2026-09-04 |
-| ✅ | [Time](skills/time/) | 2 | `pypi mcp-server-time` | 2026-09-04 |
+| ✅ | [Chrome DevTools](skills/chrome-devtools/) | 5 | `npm chrome-devtools-mcp` | 2026-09-05 |
+| ✅ | [Context7](skills/context7/) | 2 | `npm @upstash/context7-mcp` | 2026-09-05 |
+| ✅ | [DuckDB](skills/duckdb/) | 3 | `pypi mcp-server-motherduck` | 2026-09-05 |
+| ✅ | [Excel](skills/excel/) | 6 | `pypi excel-mcp-server` | 2026-09-05 |
+| ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-09-05 |
+| ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-09-05 |
+| ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-09-05 |
+| ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-09-05 |
+| ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-09-05 |
+| ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-09-05 |
+| ✅ | [Sequential Thinking](skills/sequential-thinking/) | 1 | `npm @modelcontextprotocol/server-sequential-thinking` | 2026-09-05 |
+| ✅ | [Serena](skills/serena/) | 6 | `git github.com/oraios/serena` | 2026-09-05 |
+| ✅ | [Time](skills/time/) | 2 | `pypi mcp-server-time` | 2026-09-05 |
 
 | mark | meaning |
 | --- | --- |
@@ -83,7 +83,7 @@ adding a write reaches nobody, so a bundle can never silently widen an agent tha
 
 ## The bundles
 
-### ❌ [Chrome DevTools](skills/chrome-devtools/)
+### ✅ [Chrome DevTools](skills/chrome-devtools/)
 
 Diagnose a page: performance traces, console errors, network requests and a Lighthouse audit.
 
@@ -97,7 +97,7 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `npm chrome-devtools-mcp`
 | [`cdt-network-requests`](skills/chrome-devtools/README.md) | `list_network_requests` | read |
 | [`cdt-performance-trace`](skills/chrome-devtools/README.md) | `performance_start_trace` | write |
 
-### ❌ [Context7](skills/context7/)
+### ✅ [Context7](skills/context7/)
 
 Up-to-date documentation for a library, fetched on demand.
 
@@ -145,7 +145,7 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `pypi mcp-server-fetch`
 | --- | --- | --- |
 | [`fetch-url`](skills/fetch/README.md) | `fetch` | read |
 
-### ❌ [Filesystem](skills/filesystem/)
+### ✅ [Filesystem](skills/filesystem/)
 
 Read, write and search files under a directory you nominate.
 
@@ -180,7 +180,7 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `pypi markitdown-mcp`
 | --- | --- | --- |
 | [`convert-to-markdown`](skills/markitdown/README.md) | `convert_to_markdown` | read |
 
-### ❌ [Memory](skills/memory/)
+### ✅ [Memory](skills/memory/)
 
 A knowledge graph the agent can write to and read back.
 
@@ -203,7 +203,7 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `npm @playwright/mcp`
 | [`browser-navigate`](skills/playwright/README.md) | `browser_navigate` | write |
 | [`browser-snapshot`](skills/playwright/README.md) | `browser_snapshot` | read |
 
-### ❌ [Sequential Thinking](skills/sequential-thinking/)
+### ✅ [Sequential Thinking](skills/sequential-thinking/)
 
 A structured scratchpad for multi-step reasoning.
 

@@ -34,9 +34,9 @@ provenance:
   upstream: npm @modelcontextprotocol/server-filesystem
   maintainer: delivstat/swarmkit-skills
 verification:
-  state: broken
-  checked_at: '2026-09-04'
-  detail: 'ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)'
+  state: verified
+  checked_at: '2026-09-05'
+  detail: 4 tool(s) present
 check:
   invoke:
     tool: list_directory
