@@ -42,19 +42,19 @@ wants. Every entry here has that already written down and checked.
 
 | | bundle | skills | needs | verified |
 | --- | --- | --- | --- | --- |
-| ✅ | [Chrome DevTools](skills/chrome-devtools/) | 5 | `npm chrome-devtools-mcp` | 2026-09-06 |
-| ✅ | [Context7](skills/context7/) | 2 | `npm @upstash/context7-mcp` | 2026-09-06 |
-| ✅ | [DuckDB](skills/duckdb/) | 3 | `pypi mcp-server-motherduck` | 2026-09-06 |
-| ✅ | [Excel](skills/excel/) | 6 | `pypi excel-mcp-server` | 2026-09-06 |
-| ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-09-06 |
-| ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-09-06 |
-| ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-09-06 |
-| ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-09-06 |
-| ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-09-06 |
-| ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-09-06 |
-| ✅ | [Sequential Thinking](skills/sequential-thinking/) | 1 | `npm @modelcontextprotocol/server-sequential-thinking` | 2026-09-06 |
-| ✅ | [Serena](skills/serena/) | 6 | `git github.com/oraios/serena` | 2026-09-06 |
-| ✅ | [Time](skills/time/) | 2 | `pypi mcp-server-time` | 2026-09-06 |
+| ✅ | [Chrome DevTools](skills/chrome-devtools/) | 5 | `npm chrome-devtools-mcp` | 2026-09-07 |
+| ✅ | [Context7](skills/context7/) | 2 | `npm @upstash/context7-mcp` | 2026-09-07 |
+| ✅ | [DuckDB](skills/duckdb/) | 3 | `pypi mcp-server-motherduck` | 2026-09-07 |
+| ✅ | [Excel](skills/excel/) | 6 | `pypi excel-mcp-server` | 2026-09-07 |
+| ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-09-07 |
+| ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-09-07 |
+| ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-09-07 |
+| ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-09-07 |
+| ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-09-07 |
+| ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-09-07 |
+| ✅ | [Sequential Thinking](skills/sequential-thinking/) | 1 | `npm @modelcontextprotocol/server-sequential-thinking` | 2026-09-07 |
+| ✅ | [Serena](skills/serena/) | 6 | `git github.com/oraios/serena` | 2026-09-07 |
+| ✅ | [Time](skills/time/) | 2 | `pypi mcp-server-time` | 2026-09-07 |
 
 | mark | meaning |
 | --- | --- |
