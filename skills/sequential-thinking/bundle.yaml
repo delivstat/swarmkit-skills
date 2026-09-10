@@ -22,7 +22,7 @@ provenance:
   maintainer: delivstat/swarmkit-skills
 verification:
   state: verified
-  checked_at: '2026-09-09'
+  checked_at: '2026-09-10'
   detail: 1 tool(s) present
 check:
   invoke:
