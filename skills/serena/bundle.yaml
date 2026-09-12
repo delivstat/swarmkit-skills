@@ -45,5 +45,5 @@ check:
   note: needs a project to index; the checkout itself will do
 verification:
   state: verified
-  checked_at: '2026-09-11'
+  checked_at: '2026-09-12'
   detail: 6 tool(s) present

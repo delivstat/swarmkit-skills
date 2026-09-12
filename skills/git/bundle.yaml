@@ -28,7 +28,7 @@ provenance:
   maintainer: delivstat/swarmkit-skills
 verification:
   state: verified
-  checked_at: '2026-09-11'
+  checked_at: '2026-09-12'
   detail: 3 tool(s) present
 check:
   env:
