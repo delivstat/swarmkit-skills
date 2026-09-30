@@ -8,7 +8,7 @@ an argument, or disappears, and the entry keeps claiming it works. A nightly job
 here and asks whether the tool each skill names still exists, so *verified* carries a date rather
 than a promise.
 
-**14 bundles · 42 skills.**
+**15 bundles · 46 skills.**
 
 ## How an entry is checked
 
@@ -50,6 +50,7 @@ wants. Every entry here has that already written down and checked.
 | ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-09-29 |
 | ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-09-29 |
 | 🔑 | [Gmail](skills/gmail/) | 3 | `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers` | 2026-09-30 |
+| 🔑 | [Google Calendar](skills/google-calendar/) | 4 | `Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server` | 2026-09-30 |
 | ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-09-29 |
 | ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-09-29 |
 | ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-09-29 |
@@ -182,6 +183,19 @@ Needs swarmkit-runtime `>=1.259.0` · upstream `Google Workspace remote MCP — 
 | [`get-message`](skills/gmail/README.md) | `get_message` | read |
 | [`get-thread`](skills/gmail/README.md) | `get_thread` | read |
 | [`search-threads`](skills/gmail/README.md) | `search_threads` | read |
+
+### 🔑 [Google Calendar](skills/google-calendar/)
+
+Read Google Calendar events, list calendars, and check free/busy through Google's official remote MCP server, over per-user OAuth.
+
+Needs swarmkit-runtime `>=1.259.0` · upstream `Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`get-event`](skills/google-calendar/README.md) | `get_event` | read |
+| [`list-calendars`](skills/google-calendar/README.md) | `list_calendars` | read |
+| [`list-events`](skills/google-calendar/README.md) | `list_events` | read |
+| [`suggest-time`](skills/google-calendar/README.md) | `suggest_time` | read |
 
 ### ✅ [MarkItDown](skills/markitdown/)
 
