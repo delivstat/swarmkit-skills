@@ -8,7 +8,7 @@ an argument, or disappears, and the entry keeps claiming it works. A nightly job
 here and asks whether the tool each skill names still exists, so *verified* carries a date rather
 than a promise.
 
-**13 bundles · 39 skills.**
+**14 bundles · 42 skills.**
 
 ## How an entry is checked
 
@@ -49,6 +49,7 @@ wants. Every entry here has that already written down and checked.
 | ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-09-29 |
 | ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-09-29 |
 | ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-09-29 |
+| 🔑 | [Gmail](skills/gmail/) | 3 | `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers` | 2026-09-30 |
 | ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-09-29 |
 | ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-09-29 |
 | ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-09-29 |
@@ -169,6 +170,18 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `pypi mcp-server-git`
 | [`git-diff`](skills/git/README.md) | `git_diff` | read |
 | [`git-log`](skills/git/README.md) | `git_log` | read |
 | [`git-status`](skills/git/README.md) | `git_status` | read |
+
+### 🔑 [Gmail](skills/gmail/)
+
+Read Gmail threads and messages through Google's official remote MCP server, over per-user OAuth.
+
+Needs swarmkit-runtime `>=1.259.0` · upstream `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`get-message`](skills/gmail/README.md) | `get_message` | read |
+| [`get-thread`](skills/gmail/README.md) | `get_thread` | read |
+| [`search-threads`](skills/gmail/README.md) | `search_threads` | read |
 
 ### ✅ [MarkItDown](skills/markitdown/)
 

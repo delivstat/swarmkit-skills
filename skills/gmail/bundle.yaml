@@ -1,0 +1,28 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: gmail
+  name: Gmail
+  description: Read Gmail threads and messages through Google's official remote MCP server, over per-user OAuth.
+server:
+  id: gmail
+  transport: http
+  endpoint: https://gmailmcp.googleapis.com/mcp/v1
+  credentials_ref: gmail
+  permission: readonly
+  effects:
+    search_threads: read
+    get_thread: read
+    get_message: read
+skills:
+- search-threads
+- get-thread
+- get-message
+requires_runtime: '>=1.259.0'
+provenance:
+  upstream: Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: unverifiable
+  checked_at: '2026-09-30'
+  detail: needs a per-user Google OAuth token; public CI cannot exercise it. A green tick meaning "we did not look" is worth less than no tick — this state is honest, not lesser (per CONTRIBUTING).

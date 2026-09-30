@@ -1,0 +1,19 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: get-message
+  name: Get Message
+  description: Fetch a single Gmail message by id — headers, body, and attachment metadata. Useful when a swarm already knows which message it cares about (from a search result or a webhook), and wants the message without pulling the whole thread.
+category: capability
+implementation:
+  type: mcp_tool
+  server: gmail
+  tool: get_message
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.259.0'
+  registry: swarmkit-skills
