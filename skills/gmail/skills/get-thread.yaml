@@ -1,0 +1,19 @@
+apiVersion: swarmkit/v1
+kind: Skill
+metadata:
+  id: get-thread
+  name: Get Thread
+  description: Fetch a full Gmail thread by id — every message in the conversation, in order. Paired with search-threads, this is the "read the whole conversation" step before an agent decides what to do about it.
+category: capability
+implementation:
+  type: mcp_tool
+  server: gmail
+  tool: get_thread
+iam:
+  required_scopes:
+  - workspace:read
+provenance:
+  authored_by: human
+  version: 1.0.0
+  requires_runtime: '>=1.259.0'
+  registry: swarmkit-skills
