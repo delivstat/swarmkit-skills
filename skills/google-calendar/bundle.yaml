@@ -1,0 +1,30 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: google-calendar
+  name: Google Calendar
+  description: Read Google Calendar events, list calendars, and check free/busy through Google's official remote MCP server, over per-user OAuth.
+server:
+  id: google-calendar
+  transport: http
+  endpoint: https://calendarmcp.googleapis.com/mcp/v1
+  credentials_ref: google-calendar
+  permission: readonly
+  effects:
+    list_calendars: read
+    list_events: read
+    get_event: read
+    suggest_time: read
+skills:
+- list-calendars
+- list-events
+- get-event
+- suggest-time
+requires_runtime: '>=1.259.0'
+provenance:
+  upstream: Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server
+  maintainer: delivstat/swarmkit-skills
+verification:
+  state: unverifiable
+  checked_at: '2026-09-30'
+  detail: needs a per-user Google OAuth token; public CI cannot exercise it. Same shape as the gmail bundle — an honest unverifiable state, not a lesser one.
