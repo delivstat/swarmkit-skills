@@ -9,11 +9,13 @@ implementation:
   type: mcp_tool
   server: google-calendar
   tool: list_calendars
+requires_credentials:
+  - google-calendar
 iam:
   required_scopes:
   - workspace:read
 provenance:
   authored_by: human
   version: 1.0.0
-  requires_runtime: '>=1.259.0'
+  requires_runtime: '>=1.261.0'
   registry: swarmkit-skills

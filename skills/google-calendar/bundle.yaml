@@ -21,7 +21,7 @@ skills:
 - list-events
 - get-event
 - suggest-time
-requires_runtime: '>=1.259.0'
+requires_runtime: '>=1.261.0'
 provenance:
   upstream: "Google Workspace remote MCP \u2014 https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server"
   maintainer: delivstat/swarmkit-skills

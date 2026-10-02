@@ -176,7 +176,7 @@ Needs swarmkit-runtime `>=1.199.0` · upstream `pypi mcp-server-git`
 
 Read Gmail threads and messages through Google's official remote MCP server, over per-user OAuth.
 
-Needs swarmkit-runtime `>=1.259.0` · upstream `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers`
+Needs swarmkit-runtime `>=1.261.0` · upstream `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers`
 
 | skill | tool | effects |
 | --- | --- | --- |
@@ -188,7 +188,7 @@ Needs swarmkit-runtime `>=1.259.0` · upstream `Google Workspace remote MCP — 
 
 Read Google Calendar events, list calendars, and check free/busy through Google's official remote MCP server, over per-user OAuth.
 
-Needs swarmkit-runtime `>=1.259.0` · upstream `Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server`
+Needs swarmkit-runtime `>=1.261.0` · upstream `Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server`
 
 | skill | tool | effects |
 | --- | --- | --- |

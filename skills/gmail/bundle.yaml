@@ -19,7 +19,7 @@ skills:
 - search-threads
 - get-thread
 - get-message
-requires_runtime: '>=1.259.0'
+requires_runtime: '>=1.261.0'
 provenance:
   upstream: "Google Workspace remote MCP \u2014 https://developers.google.com/workspace/guides/configure-mcp-servers"
   maintainer: delivstat/swarmkit-skills

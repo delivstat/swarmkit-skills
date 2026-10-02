@@ -9,11 +9,13 @@ implementation:
   type: mcp_tool
   server: gmail
   tool: get_thread
+requires_credentials:
+  - gmail
 iam:
   required_scopes:
   - workspace:read
 provenance:
   authored_by: human
   version: 1.0.0
-  requires_runtime: '>=1.259.0'
+  requires_runtime: '>=1.261.0'
   registry: swarmkit-skills
