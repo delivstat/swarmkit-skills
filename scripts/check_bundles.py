@@ -57,6 +57,20 @@ def main() -> int:
                 problems.append(f"{name}/{p.stem}: no iam.required_scopes — scopes are what authorize")
             if not (s.get("provenance") or {}).get("requires_runtime"):
                 problems.append(f"{name}/{p.stem}: no provenance.requires_runtime")
+            # Explicit skill↔credential link (SwarmKit #1000 part 3). When the bundle's server
+            # carries a credentials_ref, every mcp_tool skill in it must declare the same
+            # credential via requires_credentials, so the Connections page can show "Used by N
+            # skills" and warn before disconnect. The runtime also carries a server-prefix
+            # fallback for skills missing the field, so this is a lint, not a load-time error —
+            # but a catalogue entry should be explicit about what it needs.
+            cref = server.get("credentials_ref")
+            if cref and (s.get("implementation") or {}).get("type") == "mcp_tool":
+                reqs = s.get("requires_credentials") or []
+                if cref not in reqs:
+                    problems.append(
+                        f"{name}/{p.stem}: server.credentials_ref is {cref!r} but "
+                        f"requires_credentials does not list it (SwarmKit #1000 part 3)"
+                    )
 
     print(f"checked {len(bundles)} bundle(s)")
     if problems:
