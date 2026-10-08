@@ -27,5 +27,5 @@ provenance:
   maintainer: delivstat/swarmkit-skills
 verification:
   state: unverifiable
-  checked_at: '2026-10-07'
+  checked_at: '2026-10-08'
   detail: needs credential 'google-calendar'
