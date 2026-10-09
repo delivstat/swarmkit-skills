@@ -35,7 +35,7 @@ provenance:
   maintainer: delivstat/swarmkit-skills
 verification:
   state: broken
-  checked_at: '2026-10-08'
+  checked_at: '2026-10-09'
   detail: "tools not listed: ['apply_formula', 'get_workbook_metadata', 'read_data_from_excel', 'validate_excel_range',\
     \ 'validate_formula_syntax', 'write_data_to_excel']; server offers: add_conditional_format, add_data_validation,\
     \ clear_range, copy_range, copy_sheet\u2026"
