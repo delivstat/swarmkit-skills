@@ -42,21 +42,21 @@ wants. Every entry here has that already written down and checked.
 
 | | bundle | skills | needs | verified |
 | --- | --- | --- | --- | --- |
-| ✅ | [Chrome DevTools](skills/chrome-devtools/) | 5 | `npm chrome-devtools-mcp` | 2026-10-11 |
-| ✅ | [Context7](skills/context7/) | 2 | `npm @upstash/context7-mcp` | 2026-10-11 |
-| ✅ | [DuckDB](skills/duckdb/) | 3 | `pypi mcp-server-motherduck` | 2026-10-11 |
-| ❌ | [Excel](skills/excel/) | 6 | `pypi excel-mcp-server` | 2026-10-11 |
-| ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-10-11 |
-| ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-10-11 |
-| ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-10-11 |
-| 🔑 | [Gmail](skills/gmail/) | 3 | `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers` | 2026-10-11 |
-| 🔑 | [Google Calendar](skills/google-calendar/) | 4 | `Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server` | 2026-10-11 |
-| ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-10-11 |
-| ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-10-11 |
-| ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-10-11 |
-| ✅ | [Sequential Thinking](skills/sequential-thinking/) | 1 | `npm @modelcontextprotocol/server-sequential-thinking` | 2026-10-11 |
-| ✅ | [Serena](skills/serena/) | 6 | `git github.com/oraios/serena` | 2026-10-11 |
-| ✅ | [Time](skills/time/) | 2 | `pypi mcp-server-time` | 2026-10-11 |
+| ✅ | [Chrome DevTools](skills/chrome-devtools/) | 5 | `npm chrome-devtools-mcp` | 2026-10-12 |
+| ✅ | [Context7](skills/context7/) | 2 | `npm @upstash/context7-mcp` | 2026-10-12 |
+| ✅ | [DuckDB](skills/duckdb/) | 3 | `pypi mcp-server-motherduck` | 2026-10-12 |
+| ❌ | [Excel](skills/excel/) | 6 | `pypi excel-mcp-server` | 2026-10-12 |
+| ✅ | [Fetch](skills/fetch/) | 1 | `pypi mcp-server-fetch` | 2026-10-12 |
+| ✅ | [Filesystem](skills/filesystem/) | 4 | `npm @modelcontextprotocol/server-filesystem` | 2026-10-12 |
+| ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-10-12 |
+| 🔑 | [Gmail](skills/gmail/) | 3 | `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers` | 2026-10-12 |
+| 🔑 | [Google Calendar](skills/google-calendar/) | 4 | `Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server` | 2026-10-12 |
+| ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-10-12 |
+| ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-10-12 |
+| ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-10-12 |
+| ✅ | [Sequential Thinking](skills/sequential-thinking/) | 1 | `npm @modelcontextprotocol/server-sequential-thinking` | 2026-10-12 |
+| ✅ | [Serena](skills/serena/) | 6 | `git github.com/oraios/serena` | 2026-10-12 |
+| ✅ | [Time](skills/time/) | 2 | `pypi mcp-server-time` | 2026-10-12 |
 
 | mark | meaning |
 | --- | --- |
