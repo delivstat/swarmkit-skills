@@ -44,6 +44,7 @@ check:
     SWARMKIT_SERENA_PROJECT: .
   note: needs a project to index; the checkout itself will do
 verification:
-  state: verified
-  checked_at: '2026-10-13'
-  detail: 6 tool(s) present
+  state: broken
+  checked_at: '2026-10-14'
+  detail: "tools not listed: ['find_implementations', 'find_referencing_symbols', 'find_symbol', 'get_diagnostics_for_file',\
+    \ 'get_symbols_overview', 'replace_symbol_body']; server offers: initial_instructions, serena_repl\u2026"
