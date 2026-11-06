@@ -25,5 +25,5 @@ provenance:
   maintainer: delivstat/swarmkit-skills
 verification:
   state: unverifiable
-  checked_at: '2026-11-05'
+  checked_at: '2026-11-06'
   detail: needs credential 'gmail'
