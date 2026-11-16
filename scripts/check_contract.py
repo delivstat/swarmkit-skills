@@ -212,6 +212,9 @@ async def _exercise(bundle: dict, spec: dict, root: Path) -> tuple[bool, str, li
 
     name = bundle["metadata"]["id"]
     declared = (bundle["server"].get("effects") or {})
+    # A disagreement the bundle considered and explains. Accepted, and printed with its reason;
+    # anything not listed still fails, so this check keeps catching a declaration that is wrong.
+    overrides = (bundle.get("check") or {}).get("hint_overrides") or {}
     cfg = _config_for(bundle)
     manager = MCPClientManager({name: cfg}, workspace_root=root)
     disagreements: list[str] = []
@@ -224,7 +227,10 @@ async def _exercise(bundle: dict, spec: dict, root: Path) -> tuple[bool, str, li
             if hint is None:
                 continue
             says = "read" if hint else "write"
-            if says != effect:
+            if says != effect and tool in overrides:
+                print(f"     ↳ {name}/{tool}: declared {effect!r}, server hints {says!r} — "
+                      f"accepted: {overrides[tool]}")
+            elif says != effect:
                 disagreements.append(
                     f"{name}/{tool}: bundle declares {effect!r} but the server's readOnlyHint "
                     f"says {says!r}. The catalogue authors both; one of them is wrong."
