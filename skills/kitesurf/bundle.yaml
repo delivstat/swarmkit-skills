@@ -1,0 +1,60 @@
+apiVersion: swarmkit/v1
+kind: SkillBundle
+metadata:
+  id: kitesurf
+  name: Cloudflare Kitesurf
+  description: 'Browse the web on Cloudflare''s agent-first browser: open a page, read it, and act
+    on it, with reading and acting granted separately.'
+server:
+  id: kitesurf
+  transport: stdio
+  command:
+  - npx
+  - -y
+  - chrome-devtools-mcp@latest
+  - --wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/browser-run/devtools/browser?browser=kitesurf&keep_alive=600000
+  - '--wsHeaders={"Authorization":"Bearer ${CLOUDFLARE_API_TOKEN}"}'
+  - --no-usage-statistics
+  - --no-performance-crux
+  permission: cautious
+  effects:
+    take_snapshot: read
+    take_screenshot: read
+    wait_for: read
+    navigate_page: write
+    click: write
+    fill_form: write
+skills:
+- kitesurf-read-page
+- kitesurf-screenshot
+- kitesurf-wait-for
+- kitesurf-open
+- kitesurf-click
+- kitesurf-fill-form
+requires_runtime: '>=1.199.0'
+provenance:
+  upstream: npm chrome-devtools-mcp, connected to Cloudflare Browser Run (browser=kitesurf) —
+    https://developers.cloudflare.com/browser-run/cdp/mcp-clients/
+  maintainer: delivstat/swarmkit-skills
+check:
+  # The credentials ride in the server's arguments, where an unset ${VAR} would be replaced and
+  # the tools would still list (the server connects lazily). Without these, a green tick would
+  # mean "we did not look". With them, the probe proves the connection to Cloudflare.
+  requires_env: [CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN]
+  hint_overrides:
+    take_snapshot: >-
+      The server marks it not read-only because it can also save the snapshot to a file; with no
+      roots negotiated that is the OS temp folder only. It reads the page and changes nothing on it
+      or on any site.
+    take_screenshot: >-
+      The server marks it not read-only because it can also save the image to a file; with no
+      roots negotiated that is the OS temp folder only. It reads the page and changes nothing on it
+      or on any site.
+  probe:
+    tool: list_pages
+    args: {}
+  note: needs a Cloudflare account id and an API token with Browser Rendering - Edit
+verification:
+  state: unverified
+  checked_at: '2026-11-16'
+  detail: not yet checked

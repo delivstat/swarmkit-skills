@@ -43,6 +43,14 @@ def main() -> int:
             problems.append(f"{name}: bundle.skills {sorted(declared)} != files {sorted(files)}")
 
         effects = server.get("effects") or {}
+        # An accepted disagreement with a server's readOnlyHint must name a declared tool and say
+        # why — an override with no reason is a silenced check, not a considered one.
+        for tool, reason in ((b.get("check") or {}).get("hint_overrides") or {}).items():
+            if tool not in effects:
+                problems.append(f"{name}: check.hint_overrides names {tool!r}, which is not in "
+                                f"server.effects")
+            if not str(reason or "").strip():
+                problems.append(f"{name}: check.hint_overrides[{tool!r}] has no reason")
         for p in sorted((path.parent / "skills").glob("*.yaml")):
             s = yaml.safe_load(p.read_text())
             tool = (s.get("implementation") or {}).get("tool")

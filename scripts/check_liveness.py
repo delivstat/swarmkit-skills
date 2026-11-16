@@ -41,10 +41,19 @@ class Outcome:
     tools_seen: int = 0
 
 
-def _blocked(server: dict) -> str:
-    """Why this server cannot be checked here, or "" if it can."""
+def _blocked(server: dict, check: dict | None = None) -> str:
+    """Why this server cannot be checked here, or "" if it can.
+
+    ``check.requires_env`` covers credentials that ride in the server's *arguments*. Those are
+    invisible to the ``env`` scan below, and ``_argv_with`` would hand the server a placeholder in
+    their place — so a server that lists its tools without connecting (a browser driven over a
+    remote endpoint) would report verified having reached nothing.
+    """
     if server.get("credentials_ref"):
         return f"needs credential '{server['credentials_ref']}'"
+    for var in (check or {}).get("requires_env") or []:
+        if not os.environ.get(str(var)):
+            return f"needs ${var}"
     for key, raw in (server.get("env") or {}).items():
         for var in _ENV_VAR.findall(str(raw)):
             if not os.environ.get(var):
@@ -70,7 +79,8 @@ async def _check(path: Path) -> Outcome:
         for p in (path.parent / "skills").glob("*.yaml")
     }
 
-    why = _blocked(server)
+    check = bundle.get("check") or {}
+    why = _blocked(server, check)
     if why:
         return Outcome(name, "unverifiable", why)
 
@@ -90,16 +100,31 @@ async def _check(path: Path) -> Outcome:
             await asyncio.wait_for(session.initialize(), timeout=TIMEOUT_S)
             listed = await asyncio.wait_for(session.list_tools(), timeout=TIMEOUT_S)
             names = {t.name for t in listed.tools}
+            # A listed tool proves the server started, not that it reached what it fronts. A
+            # declared probe — one read call — is what proves the connection. It runs only when the
+            # bundle could be checked at all, i.e. its credentials are present.
+            probe = check.get("probe") or {}
+            probe_error = ""
+            if probe.get("tool") in names:
+                result = await asyncio.wait_for(
+                    session.call_tool(probe["tool"], probe.get("args") or {}), timeout=TIMEOUT_S
+                )
+                if result.isError:
+                    text = " ".join(getattr(c, "text", "") for c in result.content)
+                    probe_error = f"probe {probe['tool']} failed: {text}"[:160]
     except TimeoutError:
         return Outcome(name, "broken", f"did not answer within {TIMEOUT_S:.0f}s")
     except Exception as exc:
         return Outcome(name, "broken", f"{type(exc).__name__}: {exc}"[:160])
 
+    if probe_error:
+        return Outcome(name, "broken", probe_error, len(names))
     missing = sorted(wanted - names)
     if missing:
         near = ", ".join(sorted(names)[:5])
         return Outcome(name, "broken", f"tools not listed: {missing}; server offers: {near}…", len(names))
-    return Outcome(name, "verified", f"{len(wanted)} tool(s) present", len(names))
+    probed = f"; probe {check['probe']['tool']} answered" if (check.get("probe") or {}).get("tool") in names else ""
+    return Outcome(name, "verified", f"{len(wanted)} tool(s) present{probed}", len(names))
 
 
 async def run(only: str | None) -> list[Outcome]:

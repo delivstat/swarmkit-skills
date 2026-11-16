@@ -8,7 +8,7 @@ an argument, or disappears, and the entry keeps claiming it works. A nightly job
 here and asks whether the tool each skill names still exists, so *verified* carries a date rather
 than a promise.
 
-**15 bundles · 46 skills.**
+**16 bundles · 52 skills.**
 
 ## How an entry is checked
 
@@ -51,6 +51,7 @@ wants. Every entry here has that already written down and checked.
 | ✅ | [Git](skills/git/) | 3 | `pypi mcp-server-git` | 2026-11-15 |
 | 🔑 | [Gmail](skills/gmail/) | 3 | `Google Workspace remote MCP — https://developers.google.com/workspace/guides/configure-mcp-servers` | 2026-11-15 |
 | 🔑 | [Google Calendar](skills/google-calendar/) | 4 | `Google Workspace remote MCP — https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server` | 2026-11-15 |
+| ⬜ | [Cloudflare Kitesurf](skills/kitesurf/) | 6 | `npm chrome-devtools-mcp, connected to Cloudflare Browser Run (browser=kitesurf) — https://developers.cloudflare.com/browser-run/cdp/mcp-clients/` | 2026-11-16 |
 | ✅ | [MarkItDown](skills/markitdown/) | 1 | `pypi markitdown-mcp` | 2026-11-15 |
 | ✅ | [Memory](skills/memory/) | 2 | `npm @modelcontextprotocol/server-memory` | 2026-11-15 |
 | ✅ | [Playwright](skills/playwright/) | 3 | `npm @playwright/mcp` | 2026-11-15 |
@@ -196,6 +197,21 @@ Needs swarmkit-runtime `>=1.261.0` · upstream `Google Workspace remote MCP — 
 | [`list-calendars`](skills/google-calendar/README.md) | `list_calendars` | read |
 | [`list-events`](skills/google-calendar/README.md) | `list_events` | read |
 | [`suggest-time`](skills/google-calendar/README.md) | `suggest_time` | read |
+
+### ⬜ [Cloudflare Kitesurf](skills/kitesurf/)
+
+Browse the web on Cloudflare's agent-first browser: open a page, read it, and act on it, with reading and acting granted separately.
+
+Needs swarmkit-runtime `>=1.199.0` · upstream `npm chrome-devtools-mcp, connected to Cloudflare Browser Run (browser=kitesurf) — https://developers.cloudflare.com/browser-run/cdp/mcp-clients/`
+
+| skill | tool | effects |
+| --- | --- | --- |
+| [`kitesurf-click`](skills/kitesurf/README.md) | `click` | write |
+| [`kitesurf-fill-form`](skills/kitesurf/README.md) | `fill_form` | write |
+| [`kitesurf-open`](skills/kitesurf/README.md) | `navigate_page` | write |
+| [`kitesurf-read-page`](skills/kitesurf/README.md) | `take_snapshot` | read |
+| [`kitesurf-screenshot`](skills/kitesurf/README.md) | `take_screenshot` | read |
+| [`kitesurf-wait-for`](skills/kitesurf/README.md) | `wait_for` | read |
 
 ### ✅ [MarkItDown](skills/markitdown/)
 
