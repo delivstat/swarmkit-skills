@@ -32,6 +32,22 @@ why you would want it, when to grant it. "Wraps the X API" answers none of them.
 **Do not expose every tool a server has.** GitHub's exposes fifty-one. A bundle with fifty-one
 skills is not useful to an agent — picking the six that matter is the work.
 
+**When your `effects` disagree with the server's own `readOnlyHint`, say why.** The contract check
+compares the two, and a disagreement fails. That's the only check that can catch a declaration
+that is simply wrong. When the disagreement is considered, record it with its reason:
+
+```yaml
+check:
+  hint_overrides:
+    sequentialthinking: >-
+      Upstream marks it not read-only because each call appends to the server's own
+      in-memory history. Nothing outside the server changes.
+```
+
+`effects: write` means the tool changes something outside the call. A tool that only changes the
+server's own scratch state, or that can also save a file to the OS temp folder, is still `read`.
+An override with no reason, or naming a tool that isn't in `effects`, fails the structure check.
+
 ## Before opening a PR
 
 ```bash
