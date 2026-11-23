@@ -22,14 +22,13 @@ provenance:
   maintainer: delivstat/swarmkit-skills
 verification:
   state: verified
-  checked_at: '2026-11-22'
+  checked_at: '2026-11-23'
   detail: 1 tool(s) present
 check:
   hint_overrides:
-    sequentialthinking: >-
-      Upstream 2.x marks it not read-only because each call appends to the server's own
-      in-memory thought history (destructiveHint and openWorldHint are both false). Nothing
-      outside the server changes, which is what `read` means under `permission: readonly`.
+    sequentialthinking: 'Upstream 2.x marks it not read-only because each call appends to the server''s
+      own in-memory thought history (destructiveHint and openWorldHint are both false). Nothing outside
+      the server changes, which is what `read` means under `permission: readonly`.'
   invoke:
     tool: sequentialthinking
     args:
