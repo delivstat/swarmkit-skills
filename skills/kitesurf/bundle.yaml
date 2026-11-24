@@ -52,5 +52,5 @@ check:
   note: needs a Cloudflare account id and an API token with Browser Rendering - Edit
 verification:
   state: unverifiable
-  checked_at: '2026-11-23'
+  checked_at: '2026-11-24'
   detail: needs $CLOUDFLARE_ACCOUNT_ID
